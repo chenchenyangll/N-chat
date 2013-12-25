@@ -3,6 +3,21 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.title {
+  text-align: center;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 40px 0;
+}
+
+footer .github {
+  position: absolute;
+  left: 50%;
+  margin-left: -12px;
+  opacity: .25;
+}
+footer .github:hover {
+  opacity: .5;
 }
