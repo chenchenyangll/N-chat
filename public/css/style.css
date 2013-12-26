@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Electrolize);
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,6 +6,15 @@ body {
 
 .title {
   text-align: center;
+}
+.title h1 {
+  display: inline;
+  font-family: "Electrolize", sans-serif;
+  text-transform: uppercase;  
+}
+.title img {
+  margin-right: 10px;
+  vertical-align: top;
 }
 
 footer {
