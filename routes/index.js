@@ -5,4 +5,10 @@ module.exports = function(app) {
       title: 'N-chat' 
     });
   });
+  
+  app.get('/reg', function(req, res) {
+    res.render('reg', { 
+      title: '注册' 
+    });
+  });
 };

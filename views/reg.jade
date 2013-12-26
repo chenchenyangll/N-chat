@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .bg.last
+    .container
+      .col-md-6.col-md-offset-1
+        h1.heading We chat, lol
+        p.subheading ...with Water & Flood.
+        img(src='/img/secret-laugh.png', alt='lol', width='128', height='128')
+      .col-md-4
+        .reg_form
+          form.form-horizontal(method='post')
+            .form-group
+              input.form-control.input-lg(type='text', name='username', placeholder='Pick a username')
+            .form-group
+              input.form-control.input-lg(type='email', name='email', placeholder='Your email')
+            .form-group
+              input.form-control.input-lg(type='password', name='password', placeholder='Create a password')
+            .form-group
+              input.form-control.input-lg(type='password', name='repassword', placeholder='Repeat your password')
+            .form-group
+              button.btn.btn-lg.btn-block.btn-green(type='submit') Sign up
+      
