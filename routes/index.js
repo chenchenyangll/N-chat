@@ -11,4 +11,7 @@ module.exports = function(app) {
       title: '注册' 
     });
   });
+  app.post('/reg', function(req, res) {
+    
+  });
 };

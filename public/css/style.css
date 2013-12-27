@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Electrolize);
 @import url(http://fonts.googleapis.com/css?family=Galdeano);
+@import url(http://fonts.googleapis.com/css?family=Helvetica%20Neue);
 body {
   padding-top: 50px;
   font: 14px "Galdeano","Helvetica Neue","Hiragino Sans GB","Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;
@@ -25,14 +26,31 @@ body {
   border-color: #4a993e;
 }
 
-
+.topnav {
+  color: #664499
+}
+.topnav .navbar-brand {
+  font: 30px "Helvetica Neue","Galdeano","Microsoft YaHei",sans-serif;
+  padding: 10px 0;
+  line-height: 1;
+  color: #664499;
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in 0;
+}
+.topnav .signin {
+  font-size: 20px;
+  line-height: 1;
+  color: #664499;
+  margin: 5px 0;
+  padding: 9px 15px;
+}
 
 .title {
   text-align: center;
 }
 .title h1 {
   display: inline;
-  font-family: "Electrolize", sans-serif;
+  font-family: "Electrolize",sans-serif;
   text-transform: uppercase;  
 }
 .title img {
@@ -63,7 +81,7 @@ footer .github:hover {
 /* reg.jade */
 .bg .heading {
   padding-top: 20px;
-  font-size: 70px;
+  font: 70px "Galdeano","Microsoft Yahei",sans-serif;
   color: #fff;
 }
 .bg .subheading {
@@ -71,7 +89,7 @@ footer .github:hover {
   color: #fff;
 }
 .reg_form {
-  padding: 50px 10px 30px 10px;
+  padding: 50px 0 30px 10px;
 }
 .reg_form input:focues {
   
