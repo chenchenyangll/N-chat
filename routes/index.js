@@ -43,4 +43,26 @@ module.exports = function(app) {
       });      
     });
   });
+  
+  app.post('/login', function(req, res) {
+    var md5 = crypto.createHash('md5');
+    var password = md5.update(req.body.password).digest('hex');
+    
+    User.exists(req.body.username, function(err, user) {
+      if (err) {
+        console.log(err);
+        return res.redirect('back');
+      }
+      if (!user) {
+        console.log('username does not exist!');
+        return res.redirect('back');
+      }
+      if (user.password != password) {
+        console.log('password is not correct!');
+        return res.redirect('back');
+      }
+      console.log('login success!');
+      return res.redirect('/');
+    });
+  });
 };
