@@ -1,4 +1,5 @@
+var settings = require('../settings.js');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/n-chat');
+mongoose.connect(settings.urlLocal);
 
 module.exports = mongoose;

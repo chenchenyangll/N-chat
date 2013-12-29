@@ -3,6 +3,9 @@ var User = require('../models/user.js');
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
+    if (req.session.user) {
+      console.log('session: username ' + req.session.user.username);
+    }
     res.render('index', { 
       title: 'N-chat' 
     });
@@ -38,6 +41,7 @@ module.exports = function(app) {
           return res.redirect('back');
         } else {
           console.log('user save success');
+          req.session.user = newUser;
           res.redirect('/');
         }
       });      
@@ -62,6 +66,7 @@ module.exports = function(app) {
         return res.redirect('back');
       }
       console.log('login success!');
+      req.session.user = user;
       return res.redirect('/');
     });
   });

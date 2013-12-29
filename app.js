@@ -7,6 +7,12 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
+var settings = require('./settings.js');
+var SessionStore = require('session-mongoose')(express);
+var store = new SessionStore({ 
+  url: settings.urlLocal, 
+  interval: 120000
+});
 
 var app = express();
 
@@ -16,9 +22,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
 app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(express.cookieParser());
+app.use(express.session({ 
+  secret: settings.cookieSecret, 
+  cookie: { maxAge: 2592000000 }, 
+  store: store
+}));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
