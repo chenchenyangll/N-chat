@@ -1,39 +1,4 @@
 extends layout
 
 block content
-  header.navbar.navbar-default.navbar-fixed-top.topnav(role='banner')
-    .container
-      .col-md-10.col-md-offset-1
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='/') N-chat
-        nav.collapse.navbar-collapse(role='navigation')
-          ul.nav.navbar-nav
-          ul.nav.navbar-nav.navbar-right
-            li
-              a.btn.btn-default.navbar-btn.signin(href='/login') Sign in
-
-  .bg.last
-    .container
-      .col-md-6.col-md-offset-1
-        h1.heading We chat, lol
-        p.subheading ...with Water & Flood.
-        img#secret_laugh(src='/img/secret-laugh.png', alt='lol', width='128', height='128')
-      .col-md-4
-        .reg_form
-          form.form-horizontal(method='post')
-            .form-group
-              input.form-control.input-lg(type='text', name='username', placeholder='Pick a username')
-            .form-group
-              input.form-control.input-lg(type='email', name='email', placeholder='Your email')
-            .form-group
-              input.form-control.input-lg(type='password', name='password', placeholder='Create a password')
-            .form-group
-              input.form-control.input-lg(type='password', name='repassword', placeholder='Repeat your password')
-            .form-group
-              button.btn.btn-lg.btn-block.btn-green(type='submit') Sign up
-      
+  include reg_part

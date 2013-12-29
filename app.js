@@ -9,6 +9,7 @@ var http = require('http');
 var path = require('path');
 var settings = require('./settings.js');
 var MongoStore = require('connect-mongo')(express);
+var flash = require('connect-flash');
 
 var app = express();
 
@@ -16,9 +17,11 @@ var app = express();
 app.set('port', process.env.PORT || 3334);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(flash());
 app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ 

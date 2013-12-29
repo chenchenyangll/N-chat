@@ -1,13 +1,4 @@
-doctype html
-html(lang='en')
-  head
-    include header
-  body
-    .container
-      .col-md-10.col-md-offset-1.jumbotron.title
-        img(src='/img/nchat.png')
-        h1= title
-      .col-md-6.col-md-offset-2
-        include login
-    include footer
-  
+extends layout
+
+block content
+  include reg_part

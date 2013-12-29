@@ -48,6 +48,15 @@ module.exports = function(app) {
     });
   });
   
+  app.get('/login', function(req, res) {
+    if (req.session.user) {
+      req.flash('success', 'Already Login!');
+      return res.redirect('/');
+    }
+    res.render('login', { 
+      title: 'login'
+    });
+  });
   app.post('/login', function(req, res) {
     var md5 = crypto.createHash('md5');
     var password = md5.update(req.body.password).digest('hex');
