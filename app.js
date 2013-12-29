@@ -8,11 +8,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var settings = require('./settings.js');
-var SessionStore = require('session-mongoose')(express);
-var store = new SessionStore({ 
-  url: settings.urlLocal, 
-  interval: 120000
-});
+var MongoStore = require('connect-mongo')(express);
 
 var app = express();
 
@@ -28,7 +24,7 @@ app.use(express.cookieParser());
 app.use(express.session({ 
   secret: settings.cookieSecret, 
   cookie: { maxAge: 2592000000 }, 
-  store: store
+  store: new MongoStore(settings.db)
 }));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
