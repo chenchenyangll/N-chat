@@ -53,11 +53,8 @@ module.exports = function(app) {
     });
   });
   
+  app.get('/login', checkNotLogin);
   app.get('/login', function(req, res) {
-    if (req.session.user) {
-      req.flash('success', 'Already login!');
-      return res.redirect('/');
-    }
     res.render('login', { 
       title: 'login', 
       success: req.flash('success').toString(), 
@@ -87,6 +84,14 @@ module.exports = function(app) {
     });
   });
   
+  app.get('/logout', checkLogin);
+  app.get('/logout', function(req, res) {
+    req.session.user = null;
+    req.flash('success', 'Logout success!');
+    return res.redirect('/');
+  });
+  
+  app.get('/public', checkLogin);
   app.get('/public', function(req, res) {
     res.render('public', { 
       title: 'public', 
@@ -94,4 +99,20 @@ module.exports = function(app) {
       error: req.flash('error').toString()
     });
   });
+  
+  function checkNotLogin(req, res, next) {
+    if (req.session.user) {
+      req.flash('error', 'Already logged in!');
+      return res.redirect('back');
+    }
+    next();
+  }
+  
+  function checkLogin(req, res, next) {
+    if (!req.session.user) {
+      req.flash('error', 'You are not logged in!');
+      return res.redirect('/login');
+    }
+    next();
+  }
 };
