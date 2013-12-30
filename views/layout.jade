@@ -3,6 +3,15 @@ html(lang='en')
   head
     include header
   body
+    if (success)
+      .alert_bar.alert.alert-success
+        .container
+          p.alert_info= success
+    if (error)
+      .alert_bar.alert.alert-danger
+        .container
+          p.alert_info= error
+    
     block content
     include footer
   
