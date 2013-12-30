@@ -71,6 +71,19 @@ body {
   margin-right: 10px;
   vertical-align: top;
 }
+
+#chat {
+  height: 640px;
+}
+#chat_content {
+  height: 480px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+#chat form {
+  margin-top: 10px;
+}
+
 .last {
   margin-bottom: -40px;
 }

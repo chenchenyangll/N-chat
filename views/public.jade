@@ -1,4 +1,24 @@
 extends layout
 
 block content
-  
+  .bg.last
+    .container
+      .col-md-9#chat
+        div#chat_content
+        form(action='/say', method='post')
+          textarea.form-control(rows='5')
+          .form-group
+            .pull-right
+              button.btn.btn-default clear
+              button.btn.btn-default(type='submit') send
+      .col-md-3
+        ul.list-group
+          li.list-group-item Alice
+          li.list-group-item Bob
+          li.list-group-item Cathy
+          li.list-group-item Dave
+          li.list-group-item Elias
+          li.list-group-item Frank
+          li.list-group-item Gary
+          li.list-group-item Henry
+          li.list-group-item Iva
