@@ -1,4 +1,16 @@
 $(function() {
+  var socket = io.connect();
+  var from = $.cookie('user');
+  socket.emit('online', { user: from });
+  socket.on('online', function(data) {
+    if (data.user != from) {
+      alert(data.user + ' logged in!');
+    } else {
+      alert('You are logged in!'); 
+    }
+  });
+  
+  /* reg ui */
   var secret_laugh;
   var secret_laugh_jump = function() {
     var $this = $('#secret_laugh');
