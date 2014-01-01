@@ -1,12 +1,39 @@
 extends layout
 
 block content
-  .bg.last
+  header.navbar.navbar-default.public_nav(role='banner')
     .container
+      .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='/') N-chat
+      nav.collapse.navbar-collapse(role='navigation')
+        ul.nav.navbar-nav
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='/logout') Logout
+  .bg.last
+    .container.content
       .col-md-9#chat
         div#chat_content
+          ul
+            li
+              p Alice 12:34:56
+              p Hello?
+            li
+              p Bob 12:35:44
+              p Hi!
+            li
+              p Cathy 12:36:34
+              p Hey!
+            li
+              p Dave 12:37:37
+              p Good!
         form(action='/say', method='post')
-          textarea.form-control(rows='5')
+          textarea.form-control(rows='3')
           .form-group
             .pull-right
               button.btn.btn-default clear

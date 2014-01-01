@@ -1,4 +1,5 @@
 $(function() {
+  /*
   var socket = io.connect();
   var from = $.cookie('user');
   socket.emit('online', { user: from });
@@ -8,6 +9,14 @@ $(function() {
     } else {
       alert('You are logged in!'); 
     }
+  });
+  */
+  
+  /* alert bar */
+  $('.alert_bar .close').click(function() {
+    $(this).parents('.alert_bar').animate({ height: 0 }, 500, function() {
+      $(this).remove();
+    });
   });
   
   /* reg ui */

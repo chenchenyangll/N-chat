@@ -6,10 +6,12 @@ html(lang='en')
     if (success)
       .alert_bar.alert.alert-success
         .container
+          button.close(type='button', data-dismiss='alert', aria-hidden='true') X
           p.alert_info= success
     if (error)
       .alert_bar.alert.alert-danger
         .container
+          button.close(type='button', data-dismiss='alert', aria-hidden='true') X
           p.alert_info= error
     
     block content
