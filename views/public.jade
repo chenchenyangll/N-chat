@@ -32,12 +32,12 @@ block content
             li
               p Dave 12:37:37
               p Good!
-        form(action='/say', method='post')
+        form#chat_form(action='/say', method='post')
           textarea.form-control(rows='3')
           .form-group
             .pull-right
-              button.btn.btn-default clear
-              button.btn.btn-default(type='submit') send
+              button.btn.btn-default Clear
+              button.btn.btn-green(type='submit')#send Send
       .col-md-3
         ul.list-group
           li.list-group-item Alice

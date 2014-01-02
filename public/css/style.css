@@ -102,6 +102,12 @@ body {
 }
 #chat textarea {
   font-size: 1.2em;
+  margin-bottom: 5px;
+}
+#send {
+  margin-left: 10px;
+  font-size: 16px;
+  padding: 5px 20px;
 }
 
 .last {

@@ -80,7 +80,7 @@ module.exports = function(app) {
       }
       req.flash('success', 'Login success!');
       req.session.user = user;
-      res.cookie('user', user.username, { maxAge: 2592000000 });
+      res.cookie('user', user.username, { maxAge: 86400 });
       return res.redirect('/');
     });
   });
@@ -88,6 +88,7 @@ module.exports = function(app) {
   app.get('/logout', checkLogin);
   app.get('/logout', function(req, res) {
     req.session.user = null;
+    res.clearCookie('user');
     req.flash('success', 'Logout success!');
     return res.redirect('/');
   });
@@ -98,6 +99,14 @@ module.exports = function(app) {
       title: 'public', 
       success: req.flash('success').toString(), 
       error: req.flash('error').toString()
+    });
+  });
+  
+  app.post('/say', function(req, res) {
+    console.log(req.body.msg);
+    return res.json({ 
+      msg: req.body.msg, 
+      time: new Date().toString()
     });
   });
   

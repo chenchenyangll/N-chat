@@ -12,6 +12,13 @@ $(function() {
   });
   */
   
+  
+  /* chat */
+  $('#chat_form').submit(function() {
+    say($('#chat textarea').val());
+    return false;
+  });
+  
   /* alert bar */
   $('.alert_bar .close').click(function() {
     $(this).parents('.alert_bar').animate({ height: 0 }, 500, function() {
@@ -35,3 +42,14 @@ $(function() {
     clearInterval(secret_laugh);
   });
 });
+
+function say(msg) {
+  $.post('/say', {
+    'msg': msg
+  }, function(data) {
+    if (data) {
+      alert(data.msg);
+      alert(data.time);
+    }
+  });
+}

@@ -26,7 +26,7 @@ app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ 
   secret: settings.cookieSecret, 
-  cookie: { maxAge: 2592000000 }, 
+  cookie: { maxAge: 3600 }, 
   store: new MongoStore(settings.db)
 }));
 app.use(app.router);
