@@ -20,18 +20,20 @@ block content
       .col-md-9#chat
         div#chat_content
           ul
-            li
-              p Alice 12:34:56
-              p Hello?
-            li
-              p Bob 12:35:44
-              p Hi!
-            li
-              p Cathy 12:36:34
-              p Hey!
-            li
-              p Dave 12:37:37
-              p Good!
+            li.chat_msg
+              p.chat_msg_head Alice 12:34:56
+              p.chat_msg_content Hello?
+            li.chat_msg
+              p.chat_msg_head Bob 12:35:44
+              p.chat_msg_content Hi!
+            li.chat_msg
+              p.chat_msg_head Cathy 12:36:34
+              p.chat_msg_content Hey!
+            li.chat_msg
+              p.chat_msg_head Dave 12:37:37
+              p.chat_msg_content Good!
+            li.sys_msg
+              p Elias is online now!
         form#chat_form(action='/say', method='post')
           textarea.form-control(rows='3')
           .form-group

@@ -96,6 +96,24 @@ body {
   border: 1px solid #ccc;
   padding: 20px;
   background: #fff;
+  font-size: 1.2em;
+}
+#chat_content ul {
+  list-style: none;
+  padding: 0;
+}
+.chat_msg {
+}
+.chat_msg_head {
+  color: #664499;
+}
+.chat_msg_content {
+  padding-left: 1em;
+}
+.sys_msg {
+  text-align: center;
+  background: #ddd;
+  border-radius: 10px;
 }
 #chat form {
   margin-top: 10px;
