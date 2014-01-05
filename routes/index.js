@@ -3,6 +3,7 @@ var User = require('../models/user.js');
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
+    debugger;
     if (req.session.user) {
       console.log('session: username ' + req.session.user.username);
       return res.redirect('/public');
@@ -120,6 +121,7 @@ module.exports = function(app) {
   
   function checkLogin(req, res, next) {
     if (!req.session.user) {
+      debugger;
       req.flash('error', 'You are not logged in!');
       return res.redirect('/login');
     }

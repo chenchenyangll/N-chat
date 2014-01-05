@@ -26,7 +26,7 @@ app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ 
   secret: settings.cookieSecret, 
-  cookie: { maxAge: 3600 }, 
+  cookie: { maxAge: 3600000 }, 
   store: new MongoStore(settings.db)
 }));
 app.use(app.router);
@@ -41,10 +41,21 @@ routes(app);
 
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
+var users = {};
 io.sockets.on('connection', function(socket) {
   socket.on('online', function(data) {
     socket.username = data.user;
-    io.sockets.emit('online', { user: data.user });
+    if (!users[data.user]) {
+      users[data.user] = data.user;
+    }
+    io.sockets.emit('online', { users: users, user: data.user });
+  });
+  
+  socket.on('disconnect', function() {
+    if (users[socket.username]) {
+      delete users[socket.username];
+      socket.broadcast.emit('offline', { users: users, user: socket.username });
+    }
   });
 });
 
