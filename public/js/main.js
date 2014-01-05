@@ -1,24 +1,4 @@
-$(function() {
-  /*
-  var socket = io.connect();
-  var from = $.cookie('user');
-  socket.emit('online', { user: from });
-  socket.on('online', function(data) {
-    if (data.user != from) {
-      alert(data.user + ' logged in!');
-    } else {
-      alert('You are logged in!'); 
-    }
-  });
-  */
-  
-  
-  /* chat */
-  $('#chat_form').submit(function() {
-    say($('#chat textarea').val());
-    return false;
-  });
-  
+$(function() { 
   /* alert bar */
   $('.alert_bar .close').click(function() {
     $(this).parents('.alert_bar').animate({ height: 0 }, 500, function() {
@@ -42,14 +22,3 @@ $(function() {
     clearInterval(secret_laugh);
   });
 });
-
-function say(msg) {
-  $.post('/say', {
-    'msg': msg
-  }, function(data) {
-    if (data) {
-      alert(data.msg);
-      alert(data.time);
-    }
-  });
-}

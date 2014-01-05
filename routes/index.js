@@ -16,7 +16,7 @@ module.exports = function(app) {
   
   app.get('/reg', function(req, res) {
     res.render('reg', { 
-      title: '注册', 
+      title: 'Register', 
       success: req.flash('success').toString(), 
       error: req.flash('error').toString() 
     });
