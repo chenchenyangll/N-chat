@@ -51,6 +51,19 @@ io.sockets.on('connection', function(socket) {
     io.sockets.emit('online', { users: users, user: data.user });
   });
   
+  socket.on('say', function(data) {
+    if (data.to == null) {
+      socket.broadcast.emit('say', data);
+    } else {
+      var clients = io.sockets.clients();
+      clients.forEach(function(client) {
+        if (client.username == data.to) {
+          client.emit('say', data);
+        }
+      });
+    }
+  });
+  
   socket.on('disconnect', function() {
     if (users[socket.username]) {
       delete users[socket.username];
