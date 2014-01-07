@@ -19,7 +19,7 @@ $(function() {
   });
   
   $('#chat_form').submit(function() {
-    say($('#chat textarea').val());
+    say(escapeHtml($('#chat textarea').val()));
     return false;
   });
   
@@ -30,13 +30,24 @@ $(function() {
     $('#chat_content ul').append('<li class="chat_msg"><p class="chat_msg_head">'
       + from + ' ' + now() 
       + '</p><p class="chat_msg_content">' + msg + '</p></li>');
+    var div = $('#chat_content')[0];
+    div.scrollTop = div.scrollHeight;
   };
   var say = function(msg) {
-    // update ui
+    onSay(self, msg);
     socket.emit('say', { from: self, to: null, msg: msg });
     $('#chat_form textarea').val('').focus();
   };
 });
+
+function escapeHtml(str) {
+  str = str.replace("&", "&amp;");
+  str = str.replace("\"", "&quot;");
+  str = str.replace("'", "&#039;");
+  str = str.replace("<", "&lt;");
+  str = str.replace(">", "&gt;");
+  return str;
+}
 
 function now() {
   var date = new Date();

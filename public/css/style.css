@@ -97,6 +97,7 @@ body {
   padding: 20px;
   background: #fff;
   font-size: 1.2em;
+  overflow-y: scroll;
 }
 #chat_content ul {
   list-style: none;
@@ -109,6 +110,7 @@ body {
 }
 .chat_msg_content {
   padding-left: 1em;
+  word-wrap: break-word;
 }
 .sys_msg {
   text-align: center;
