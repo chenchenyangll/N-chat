@@ -18,9 +18,11 @@ $(function() {
     onSay(data.from, data.msg);
   });
   
-  $('#chat_form').submit(function() {
-    say(escapeHtml($('#chat textarea').val()));
-    return false;
+  $('#chat_form').submit(function(e) {
+    var msg = $('#chat_form textarea').val();
+    // escape html code
+    say(msg.toHtmlEncode());
+    e.preventDefault();
   });
   
   var onOnline = function(user) {
@@ -40,12 +42,16 @@ $(function() {
   };
 });
 
-function escapeHtml(str) {
-  str = str.replace("&", "&amp;");
-  str = str.replace("\"", "&quot;");
-  str = str.replace("'", "&#039;");
-  str = str.replace("<", "&lt;");
-  str = str.replace(">", "&gt;");
+String.prototype.toHtmlEncode = function() {
+  var str = this;
+  str = str.replace(/&/g, "&amp;");
+  str = str.replace(/</g, "&lt;");
+  str = str.replace(/>/g, "&gt;");
+  str = str.replace(/\'/g, "&apos;");
+  str = str.replace(/\"/g, "&quot;");
+  str = str.replace(/\x0a/g, "<br/>");
+  str = str.replace(/\ /g, "&nbsp;");
+  str = str.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
   return str;
 }
 

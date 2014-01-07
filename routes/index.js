@@ -81,7 +81,7 @@ module.exports = function(app) {
       }
       req.flash('success', 'Login success!');
       req.session.user = user;
-      res.cookie('user', user.username, { maxAge: 86400 });
+      res.cookie('user', user.username, { maxAge: 86400000 });
       return res.redirect('/');
     });
   });
